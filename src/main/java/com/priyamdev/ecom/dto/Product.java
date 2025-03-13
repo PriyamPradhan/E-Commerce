@@ -1,9 +1,11 @@
 package com.priyamdev.ecom.dto;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.io.Serializable;
 
+@Data
 @Entity
 public class Product implements Serializable {
 
