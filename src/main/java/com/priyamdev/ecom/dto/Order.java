@@ -2,6 +2,8 @@ package com.priyamdev.ecom.dto;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -19,7 +21,7 @@ public class Order implements Serializable {
     @Column(name = "order_id")
     private Long orderId;
 
-    @Column(name = "user_id")
+    @Column(name = "user_id", nullable = false)
     private Long userId;
 
     @Column(name = "order_date")
@@ -33,6 +35,8 @@ public class Order implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @Getter
+    @Setter
     private User user;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
