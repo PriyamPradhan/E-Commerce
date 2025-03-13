@@ -1,15 +1,15 @@
 package com.priyamdev.ecom.dto;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.List;
 
 @Data
 @Entity
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@AllArgsConstructor
 public class User implements Serializable {
 
     @Id

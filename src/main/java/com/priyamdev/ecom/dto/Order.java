@@ -1,9 +1,7 @@
 package com.priyamdev.ecom.dto;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -14,6 +12,8 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "orders")
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@AllArgsConstructor
 public class Order implements Serializable {
 
     @Id
