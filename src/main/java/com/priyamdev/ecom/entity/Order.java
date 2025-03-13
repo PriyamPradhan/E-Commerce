@@ -1,5 +1,6 @@
 package com.priyamdev.ecom.entity;
 
+import com.priyamdev.ecom.entity.enums.OrderStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,6 +32,7 @@ public class Order implements Serializable {
     @Column(name = "total_amount")
     private BigDecimal totalAmount;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private OrderStatus status;
 
@@ -43,11 +45,11 @@ public class Order implements Serializable {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Payment> payments;
 
-    public enum OrderStatus {
-        PENDING,
-        COMPLETED,
-        CANCELED
-    }
+//    public enum OrderStatus {
+//        PENDING,
+//        COMPLETED,
+//        CANCELED
+//    }
 
     private static final long serialVersionUID = 1L;
 

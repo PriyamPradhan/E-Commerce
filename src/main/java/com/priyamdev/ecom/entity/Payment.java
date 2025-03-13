@@ -1,5 +1,6 @@
 package com.priyamdev.ecom.entity;
 
+import com.priyamdev.ecom.entity.enums.PaymentMethod;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -38,14 +39,13 @@ public class Payment implements Serializable {
     @Column(name = "valid_until")
     private Date validUntil;
 
-    public enum PaymentMethod {
-        CREDIT_CARD,
-        DEBIT_CARD,
-        PAYPAL,
-        BANK_TRANSFER,
-        CASH_ON_DELIVERY,
-        CRYPTOCURRENCY
-    }
+//    public enum PaymentMethod {
+//        CREDIT_CARD,
+//        DEBIT_CARD,
+//        PAYPAL,
+//        UPI,
+//        CASH_ON_DELIVERY
+//    }
 
 
     private static final long serialVersionUID = 1L;
