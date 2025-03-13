@@ -1,6 +1,5 @@
 package com.priyamdev.ecom.service;
 
-import com.priyamdev.ecom.entity.Product;
 import com.priyamdev.ecom.entity.User;
 import com.priyamdev.ecom.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
