@@ -1,6 +1,7 @@
 package com.priyamdev.ecom.service;
 
 import com.priyamdev.ecom.entity.Payment;
+import com.priyamdev.ecom.entity.Product;
 import com.priyamdev.ecom.repository.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

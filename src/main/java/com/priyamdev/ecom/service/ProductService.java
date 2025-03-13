@@ -30,7 +30,16 @@ public class ProductService {
     }
 
     public Product updateProduct(Product product) {
-        return productRepository.save(product);
+        Product existingProduct = getProductById(product.getProductId());
+        if (existingProduct != null) {
+            existingProduct.setProductName(product.getProductName());
+            existingProduct.setDescription(product.getDescription());
+            existingProduct.setPrice(product.getPrice());
+            existingProduct.setStock(product.getStock());
+            return productRepository.save(existingProduct);
+        } else {
+            return null;
+        }
     }
 
     public void deleteProduct(Long id) {

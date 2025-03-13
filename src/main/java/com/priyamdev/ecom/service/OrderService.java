@@ -32,7 +32,13 @@ public class OrderService {
     }
 
     public Order updateOrder(Order order) {
-        return orderRepository.save(order);
+        Order existingOrder = getOrderById(order.getOrderId());
+        if (existingOrder != null) {
+            existingOrder.setStatus(order.getStatus());
+            return orderRepository.save(order);
+        }else {
+            return null;
+        }
     }
 
     public void deleteOrder(Long id) {
