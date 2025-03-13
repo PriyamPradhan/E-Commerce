@@ -14,6 +14,7 @@ import java.util.List;
 @Table(name = "orders")
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor
+@Builder
 public class Order implements Serializable {
 
     @Id
@@ -47,4 +48,7 @@ public class Order implements Serializable {
         COMPLETED,
         CANCELED
     }
+
+    private static final long serialVersionUID = 1L;
+
 }

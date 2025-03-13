@@ -10,6 +10,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor
+@Builder
 public class User implements Serializable {
 
     @Id
@@ -20,7 +21,7 @@ public class User implements Serializable {
     private String username;
 
     @Column(nullable = false)
-    private String password;
+    private transient String password;      // transient for no serialization
 
     @Column(nullable = false)
     private String email;
@@ -32,12 +33,20 @@ public class User implements Serializable {
     @Column(nullable = false)
     private List<String> roles;
 
-    @OneToMany(mappedBy = "userId")
+//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JoinTable(
+//            name = "user_role",
+//            joinColumns = @JoinColumn(name = "user_id"),
+//            inverseJoinColumns = @JoinColumn(name = "role_id")
+//    )
+//    private Set<Role> roles;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @Getter
     @Setter
     private List<Order> orders;
 
-
+    private static final long serialVersionUID = 1L;
 
 
 }

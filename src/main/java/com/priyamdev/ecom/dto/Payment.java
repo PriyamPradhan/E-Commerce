@@ -1,19 +1,18 @@
 package com.priyamdev.ecom.dto;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Data
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor
-public class Payment {
+@Builder
+public class Payment implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,5 +46,8 @@ public class Payment {
         CASH_ON_DELIVERY,
         CRYPTOCURRENCY
     }
+
+
+    private static final long serialVersionUID = 1L;
 
 }
