@@ -1,6 +1,6 @@
 package com.priyamdev.ecom.dao;
 
-import com.priyamdev.ecom.dto.Product;
+import com.priyamdev.ecom.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

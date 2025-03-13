@@ -1,4 +1,4 @@
-package com.priyamdev.ecom.dto;
+package com.priyamdev.ecom.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
