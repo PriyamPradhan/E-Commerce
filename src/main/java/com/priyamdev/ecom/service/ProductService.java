@@ -4,6 +4,7 @@ import com.priyamdev.ecom.entity.Product;
 import com.priyamdev.ecom.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class ProductService {
         return productRepository.findById(id).orElse(null);
     }
 
+    @Transactional
     public Product createProduct(Product product) {
         if (product.getStock() < 0){
             throw new IllegalArgumentException("Stock cannot be less than zero");
@@ -32,8 +34,8 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public Product updateProduct(Product product) {
-        Product existingProduct = getProductById(product.getProductId());
+    public Product updateProduct(Long id, Product product) {
+        Product existingProduct = getProductById(id);
         if (existingProduct != null) {
             existingProduct.setProductName(product.getProductName());
             existingProduct.setDescription(product.getDescription());

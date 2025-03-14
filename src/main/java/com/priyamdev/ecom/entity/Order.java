@@ -36,6 +36,9 @@ public class Order implements Serializable {
     @Column(name = "status")
     private OrderStatus status;
 
+//    @Column(name = "items")
+//    private List<Product> items;
+
     @ManyToOne
     @JoinColumn(name = "orders", referencedColumnName = "id")
     @Getter

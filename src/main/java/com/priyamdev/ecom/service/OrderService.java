@@ -22,10 +22,13 @@ public class OrderService {
 
     private final RestTemplate restTemplate;
 
+    private final ProductService productService;
+
     @Autowired  // ✅ Autowiring is optional for single-constructor classes
-    public OrderService(OrderRepository orderRepository, RestTemplate restTemplate) {
+    public OrderService(OrderRepository orderRepository, RestTemplate restTemplate, ProductService productService) {
         this.orderRepository = orderRepository;
         this.restTemplate = restTemplate;
+        this.productService = productService;
     }
 
 
@@ -39,6 +42,16 @@ public class OrderService {
     }
 
     public Order createOrder(Order order) {
+//        Double total = 0.0;
+//        for (Product item : order.getItems()) {
+//            Product product = productService.getProductById(item.getProductId());
+//            total += item.getQuantity() * product.getPrice();
+//        }
+//        order.setTotal(total);
+//
+//        if (total <= 0) {
+//            throw new IllegalArgumentException("Order total must be greater than zero");
+//        }
         return orderRepository.save(order);
     }
 
