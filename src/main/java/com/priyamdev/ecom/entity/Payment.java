@@ -39,6 +39,9 @@ public class Payment implements Serializable {
     @Column(name = "valid_until")
     private Date validUntil;
 
+    @Column(name = "errorMessage", nullable = true)
+    private String errorMessage;
+
 //    public enum PaymentMethod {
 //        CREDIT_CARD,
 //        DEBIT_CARD,
