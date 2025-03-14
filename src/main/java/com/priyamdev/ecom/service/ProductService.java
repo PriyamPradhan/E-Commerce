@@ -26,6 +26,9 @@ public class ProductService {
     }
 
     public Product createProduct(Product product) {
+        if (product.getStock() < 0){
+            throw new IllegalArgumentException("Stock cannot be less than zero");
+        }
         return productRepository.save(product);
     }
 
@@ -47,11 +50,14 @@ public class ProductService {
     }
 
     // Example of business logic: Update stock
-    public void updateStock(Long productId, Integer quantity) {
-        Product product = getProductById(productId);
-        if (product != null) {
-            product.setStock(product.getStock() - quantity);
-            productRepository.save(product);
+    public Product updateStock(Long productId, Integer quantity) {
+
+        Product product = productRepository.findById(productId).orElseThrow(() -> new IllegalArgumentException("Product not found"));
+
+        product.setStock(product.getStock() + quantity);
+        if (product.getStock() < 0){
+            throw new IllegalArgumentException("Stock cannot be less than zero");
         }
+        return productRepository.save(product);
     }
 }
