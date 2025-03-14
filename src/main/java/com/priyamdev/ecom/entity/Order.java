@@ -10,10 +10,10 @@ import java.util.Date;
 import java.util.List;
 
 
-@Data
 @Entity
+@Data
 @Table(name = "orders")
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class Order implements Serializable {
@@ -37,10 +37,10 @@ public class Order implements Serializable {
     private OrderStatus status;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JoinColumn(name = "orders", referencedColumnName = "id")
     @Getter
     @Setter
-    private User user;
+    private User iduser;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Payment> payments;

@@ -8,6 +8,7 @@ import java.util.List;
 
 @Data
 @Entity
+@Table(name = "users")
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor
 @Builder
@@ -21,7 +22,7 @@ public class User implements Serializable {
     private String username;
 
     @Column(nullable = false)
-    private transient String password;      // transient for no serialization
+    private String password;      // transient for no serialization
 
     @Column(nullable = false)
     private String email;
@@ -41,7 +42,7 @@ public class User implements Serializable {
 //    )
 //    private Set<Role> roles;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "iduser", cascade = CascadeType.ALL, orphanRemoval = true)
     @Getter
     @Setter
     private List<Order> orders;

@@ -6,6 +6,7 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
@@ -23,7 +24,7 @@ public class Payment implements Serializable {
     private PaymentMethod paymentMethod;
 
     @Column(precision = 10, scale = 2)
-    private Double amount;
+    private BigDecimal amount;
 
     @Column(nullable = false)
     private String paymentStatus;
