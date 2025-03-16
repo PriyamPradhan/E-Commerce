@@ -55,8 +55,8 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
-    public Order updateOrder(Order order) {
-        Order existingOrder = getOrderById(order.getOrderId());
+    public Order updateOrder(long id, Order order) {
+        Order existingOrder = getOrderById(id);
         if (existingOrder != null) {
             existingOrder.setStatus(order.getStatus());
             return orderRepository.save(order);

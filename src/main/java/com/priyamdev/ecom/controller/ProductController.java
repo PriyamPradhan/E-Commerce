@@ -19,6 +19,7 @@ public class ProductController {
     }
 
 
+
     @GetMapping
     public List<Product> getAllProducts() {
         return productService.getAllProducts();
@@ -27,6 +28,11 @@ public class ProductController {
     @PostMapping
     public Product addProduct(@RequestBody Product product) {
         return productService.createProduct(product);
+    }
+
+    @GetMapping("/{id}")
+    public Product getProduct(@PathVariable Long id) {
+        return productService.getProductById(id);
     }
 
     @PutMapping("/{id}")
